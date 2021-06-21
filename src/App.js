@@ -28,7 +28,7 @@ function App() {
     <div>
       <Header />
       <SearchBar />
-      <NoteCreator />
+      <NoteCreator createNote={addNote}/>
       {notes.map((noteItem, index) => {
         return (
           <Note 

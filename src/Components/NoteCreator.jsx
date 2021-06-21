@@ -21,8 +21,14 @@ function NoteCreator(props) {
     return (
         <div>
             <form onChange = {handleChange}>
-                <input />
-                <button />
+                <input name="title" placeholder="title" value={note.title} />
+                <textarea name="content" placeholder="note" value={note.content} rows="5" />
+                <button onClick={(event) => {
+                    props.createNote(note);
+                    event.preventDefault();
+                }}>
+                    Add
+                </button>
             </form>
         </div>
     )
