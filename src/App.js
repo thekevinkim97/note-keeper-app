@@ -31,7 +31,13 @@ function App() {
       <NoteCreator />
       {notes.map((noteItem, index) => {
         return (
-          <Note />
+          <Note 
+            key={index}
+            id={index}
+            title={noteItem.title}
+            content={noteItem.content}
+            delete={deleteNote}
+          />
         )
       })}
       <Footer />
