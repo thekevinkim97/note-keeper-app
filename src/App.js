@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import SearchBar from "./Components/SearchBar";
 import Note from "./Components/Note";
+import NoteCreator from "./Components/NoteCreator";
 
 function App() {
   const [notes, setNotes] = useState([]);
