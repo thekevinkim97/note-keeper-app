@@ -14,7 +14,15 @@ function App() {
     });
   }
 
-  function editNote(id, note) {
+  function editNote(id) {
+    const newInfo = {
+      title: "COngratz",
+        content: "yougfe skdnm"
+    };
+    let newNotes = [...notes];
+    newNotes[id] = newInfo;
+
+    setNotes(newNotes);
   }
 
   function deleteNote(id) {
@@ -37,6 +45,7 @@ function App() {
             id={index}
             title={noteItem.title}
             content={noteItem.content}
+            edit={editNote}
             delete={deleteNote}
           />
         )
