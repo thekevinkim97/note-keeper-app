@@ -14,15 +14,12 @@ function App() {
     });
   }
 
-  function editNote(id) {
-    const newInfo = {
-      title: "COngratz",
-        content: "yougfe skdnm"
-    };
-    let newNotes = [...notes];
-    newNotes[id] = newInfo;
-
-    setNotes(newNotes);
+  function editNote(id, newNote) {
+    setNotes((prevNotes) => {
+      let newNotes = [...prevNotes];
+      newNotes[id] = newNote;
+      return newNotes;
+    });
   }
 
   function deleteNote(id) {
@@ -37,7 +34,7 @@ function App() {
     <div>
       <Header />
       <SearchBar />
-      <NoteCreator createNote={addNote}/>
+      <NoteCreator placeholderTitle="" placeholderContent="" editingNote={false} createNote={addNote} />
       {notes.map((noteItem, index) => {
         return (
           <Note 

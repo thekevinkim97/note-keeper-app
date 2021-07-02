@@ -1,9 +1,10 @@
+import { logDOM } from "@testing-library/react";
 import React, {useState} from "react";
 
 function NoteCreator(props) {
     const [note, setNote] = useState({
-        title: "",
-        content: ""
+        title: props.placeholderTitle,
+        content: props.placeholderContent
     });
 
     function handleChange(event) {
@@ -21,14 +22,18 @@ function NoteCreator(props) {
     return (
         <div>
             <form onChange = {handleChange}>
-                <input name="title" placeholder="title" value={note.title} />
+                <input name="title" placeholder="title" value={note.title}/>
                 <textarea name="content" placeholder="note" value={note.content} rows="5" />
+
+                {props.editingNote === false ? 
                 <button onClick={(event) => {
                     props.createNote(note);
                     event.preventDefault();
-                }}>
-                    Add
-                </button>
+                }}> ADD </button> : 
+                <button onClick={(event) => {
+                    props.createNote(props.id, note);
+                    event.preventDefault();
+                }} > SUBMIT CHANGE </button>}
             </form>
         </div>
     )
