@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { EasybaseProvider, useEasybase } from "easybase-react";
+import ebconfig from "./ebconfig";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Note from "./Components/Note";
 import NoteCreator from "./Components/NoteCreator";
+import AllNotes from "./Components/AllNotes";
 
 function App() {
   const [notes, setNotes] = useState([]);
 
+  //Replace
   function addNote(newNote) {
     setNotes((prevNotes) => {
       return [...prevNotes, newNote];
     });
   }
 
+  //Replace
   function editNote(id, newNote) {
     setNotes((prevNotes) => {
       let newNotes = [...prevNotes];
@@ -21,6 +26,7 @@ function App() {
     });
   }
 
+  //Replace
   function deleteNote(id) {
     setNotes((prevNotes) => {
       return prevNotes.filter((item, index) => {
@@ -34,18 +40,11 @@ function App() {
       <Header />
 
       <NoteCreator placeholderTitle="" placeholderContent="" editingNote={false} createNote={addNote} />
-      {notes.map((noteItem, index) => {
-        return (
-          <Note 
-            key={index}
-            id={index}
-            title={noteItem.title}
-            content={noteItem.content}
-            edit={editNote}
-            delete={deleteNote}
-          />
-        )
-      })}
+      
+      <EasybaseProvider ebconfig={ebconfig}>
+        <AllNotes editNote={editNote} deleteNote={deleteNote}/>
+      </EasybaseProvider>
+
       <Footer />
     </div>
   );
