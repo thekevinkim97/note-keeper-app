@@ -1,4 +1,3 @@
-import { logDOM } from "@testing-library/react";
 import React, {useState} from "react";
 
 function NoteCreator(props) {

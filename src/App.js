@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import SearchBar from "./Components/SearchBar";
 import Note from "./Components/Note";
 import NoteCreator from "./Components/NoteCreator";
 
@@ -33,7 +32,7 @@ function App() {
   return (
     <div>
       <Header />
-      <SearchBar />
+
       <NoteCreator placeholderTitle="" placeholderContent="" editingNote={false} createNote={addNote} />
       {notes.map((noteItem, index) => {
         return (
